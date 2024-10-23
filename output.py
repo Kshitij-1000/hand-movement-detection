@@ -6,13 +6,11 @@ mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.7)
 mp_draw = mp.solutions.drawing_utils
 
-# Capture video from camera
+# Capture video from camera by giving the value 0 or 
+# if video is pre-recorded then the relevant path string to the video_path variable
+video_path = 0
 cap = cv2.VideoCapture('./video_samples/hand_video_3.mp4')
 
-
-
-
-# Main loop for video processing
 while True:
     success, image = cap.read()
     if not success:
@@ -38,7 +36,5 @@ while True:
     # Exit loop if 'q' is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-# Release resources
 cap.release()
 cv2.destroyAllWindows()
